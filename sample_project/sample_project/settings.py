@@ -37,6 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'base_app',
+    'inheriting_class_app',
+    'django.contrib.sites',
 ]
 
 MIDDLEWARE = [
@@ -123,3 +126,21 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+from django.db import models
+from django.utils.translation import gettext_lazy as _
+class CATEGORY(models.TextChoices):
+    EVENT = 'EV', _('Event')
+    QUESTION = 'QN', _('Question')
+    GENERAL = 'GL', _('General')
+    PICTURES = 'PS', _('Pictures')
+    FORSALE = 'FS', _('For Sale')
+
+class LOCATION(models.TextChoices):
+    ANY_ISLE = 'AI', _('Any')
+    ALDERNEY = 'AY', _('Alderney')
+    GUERNSEY = 'GY', _('Guernsey')
+    JERSEY = 'JE', _('Jersey')
+    SARK = 'SK', _('Sark')
+
+SITE_ID = 1
